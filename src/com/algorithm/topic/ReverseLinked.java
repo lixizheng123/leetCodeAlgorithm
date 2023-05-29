@@ -7,6 +7,11 @@ package com.algorithm.topic;
  */
 public class ReverseLinked {
 
+    /**
+     * 迭代（双指针 尾插法）
+     * @param head 头指针
+     * @return 反转后的链表
+     */
     public ListNode reverseList(ListNode head){
         // 尾插法生成新的链表
         ListNode p = null;
@@ -18,6 +23,19 @@ public class ReverseLinked {
             p = h;
         }
         return p;
+    }
+
+    /**
+     * 递归实现 反转链表
+     * @param cur 当前节点
+     * @param pre 辅助指针
+     * @return 交换
+     */
+    public ListNode recur(ListNode cur, ListNode pre){
+        if(cur == null) return pre;
+        ListNode res = recur(cur.next, cur);
+        cur.next = pre;
+        return res;
     }
 
     public static void main(String[] args) {
@@ -32,8 +50,11 @@ public class ReverseLinked {
         listNode2.next = listNode3;
         listNode3.next = listNode4;
 
-        ListNode listNode = reverseLinked.reverseList(listNode1);
+        // 双指针 尾插法
+//        ListNode listNode = reverseLinked.reverseList(listNode1);
+        ListNode listNode = reverseLinked.recur(listNode1, null);
 
+        // 遍历链表
         while (listNode != null){
             System.out.print(listNode.val + " ");
             listNode = listNode.next;
