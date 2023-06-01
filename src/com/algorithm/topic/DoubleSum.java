@@ -46,6 +46,7 @@ public class DoubleSum {
 class ListNode{
     int val;
     ListNode next;
+    ListNode random;
 
     ListNode() {}
     ListNode(int val) {this.val = val;}

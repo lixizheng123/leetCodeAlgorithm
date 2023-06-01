@@ -21,14 +21,14 @@ public class Main {
 //        System.out.println(param_2);
 
         // 最小栈
-        MinStack minStack = new MinStack();
-        minStack.push(10);
-        minStack.push(13);
-        minStack.push(11);
-        minStack.push(1);
-        System.out.println(minStack.min());
-        System.out.println(minStack.top());
-        minStack.pop();
-        System.out.println(minStack.top());
+//        MinStack minStack = new MinStack();
+////        minStack.push(10);
+////        minStack.push(13);
+////        minStack.push(11);
+////        minStack.push(1);
+////        System.out.println(minStack.min());
+////        System.out.println(minStack.top());
+////        minStack.pop();
+////        System.out.println(minStack.top());
     }
 }
