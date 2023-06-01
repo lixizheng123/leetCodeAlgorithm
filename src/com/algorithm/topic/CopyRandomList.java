@@ -17,6 +17,7 @@ public class CopyRandomList {
         if(head == null){
             return null;
         }
+
         ListNode cur = head;
         Map<ListNode, ListNode> map = new HashMap<>();
         while (cur != null){
@@ -32,5 +33,37 @@ public class CopyRandomList {
         }
 
         return map.get(head);
+    }
+
+    public ListNode copyRandomList2(ListNode head){
+        if (head == null) return null;
+        ListNode cur = head;
+        // 1. 复制各个节点 并构建拼接链表
+        while(cur != null){
+            ListNode temp = new ListNode(cur.val);
+            temp.next = cur.next;
+            cur.next = temp;
+            cur = temp.next;
+        }
+        // 2. 构建各新节点的random指向
+        cur = head;
+        while (cur != null){
+            if(cur.random != null){
+                cur.next.random = cur.random.next;
+            }
+            cur = cur.next;
+        }
+        // 3. 拆分两链表
+        cur = head.next;
+        ListNode pre = head, res = head.next;
+        while(cur.next != null){
+            pre.next = pre.next.next;
+            cur.next = cur.next.next;
+            pre = pre.next;
+            cur = cur.next;
+        }
+        pre.next = null;
+
+        return res;
     }
 }
